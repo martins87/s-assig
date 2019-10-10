@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 var transactionSchema = new Schema({
-    id: String,
+    txId: String,
     currencyAmount: String,
     currencyType: String,
     sourceUserId: String,

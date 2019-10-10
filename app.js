@@ -31,6 +31,21 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Salamantex' })
 })
 
+app.get('/users', (req, res) => {
+    User.find({}, (err, users) => {
+        if(err) {
+            console.log('There was a problem retrieving the users from the database')
+            console.log(err)
+        } else {
+            console.log(users)
+            res.render('users', {
+                title: 'Users',
+                users: users
+            })
+        }
+    })
+})
+
 app.get('/create-user', (req, res) => {
     res.render('create-user', { title: 'Create User' })
 })
@@ -45,7 +60,7 @@ app.post('/create-user', (req, res) => {
     console.log("maxAmountAllowed: ", data.maxAmountAllowed)
 
     User.create({
-        id: "101",
+        // id: mongoose.Types.ObjectId.toString,
         name: data.name,
         description: data.description,
         email: data.email,
@@ -53,7 +68,7 @@ app.post('/create-user', (req, res) => {
         bitcoinBalance: "0",
         ethereumWalletId: data.ethereumWalletId,
         etherBalance: "0",
-        maxAmountAllowed: data.ethereumWalletId,
+        maxAmountAllowed: data.maxAmountAllowed,
     }, (err, data) => {
         if(err) {
             console.log('There was a problem adding a document to users collection')

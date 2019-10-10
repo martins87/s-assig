@@ -1,0 +1,33 @@
+<% include partials/header.ejs %>
+
+    <div class="container py-5">
+        <div class="row mb-2">
+            <header>
+                <h2><b>Users</b></h2>
+            </header>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Bitcoin address</th>
+                        <th scope="col">Ethereum address</th>
+                    </tr>
+                    <tbody>
+                        <% for(let i = 0; i < users.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= users[i]._id %></th>
+                            <td><%= users[i].name %></td>
+                            <td><%= users[i].bitcoinWalletId %></td>
+                            <td><%= users[i].ethereumWalletId %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+<% include partials/footer.ejs %>
