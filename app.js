@@ -46,6 +46,31 @@ app.get('/users', (req, res) => {
     })
 })
 
+app.get('/users/:id', (req, res) => {
+    var id = req.params.id
+
+    User.findById(id, (err, user) => {
+        if(err) {
+            console.log('There was a problem retrieving the user from the database')
+            console.log(err)
+        } else {
+            console.log('User found:\n' + user)
+
+            res.render('user', {
+                id: id,
+                name: user.name,
+                description: user.description,
+                email: user.email,
+                bitcoinWalletId: user.bitcoinWalletId,
+                bitcoinBalance: user.bitcoinBalance,
+                ethereumWalletId: user.ethereumWalletId,
+                etherBalance: user.etherBalances,
+                maxAmountAllowed: user.maxAmountAllowed
+            })
+        }
+    })
+})
+
 app.get('/create-user', (req, res) => {
     res.render('create-user', { title: 'Create User' })
 })

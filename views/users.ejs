@@ -18,7 +18,11 @@
                     <tbody>
                         <% for(let i = 0; i < users.length; i++) { %>
                         <tr>
-                            <th scope="row"><%= users[i]._id %></th>
+                            <th scope="row">
+                                <a href="/users/<%= users[i]._id %>">
+                                    <%= users[i]._id %>
+                                </a>
+                            </th>
                             <td><%= users[i].name %></td>
                             <td><%= users[i].bitcoinWalletId %></td>
                             <td><%= users[i].ethereumWalletId %></td>
