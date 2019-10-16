@@ -25,8 +25,6 @@ window.addEventListener('load', async () => {
             console.log(error)
         } else {
             accountAddress = result
-            console.log('Account address from MetaMask: ' + accountAddress)
-
             let acc = accountAddress + ''
             acc = acc.substring(2, acc.length)
 
@@ -36,18 +34,40 @@ window.addEventListener('load', async () => {
                     console.log(error)
                 } else {
                     balance = res
-                    console.log('Balance: ' + web3.fromWei(balance, 'ether').toFixed(4) + ' Ξ')
+                    console.log('Account address from MetaMask: ' + accountAddress +
+                        '\nBalance: ' + web3.fromWei(balance, 'ether').toFixed(4) + ' Ξ')
                 }
             })
         }
     })
 })
 
-function getTransaction() {
+function submitTransaction() {
     var address = $('#_accountAddress').val()
     var amount = $('#_amount').val()
     var transactionFee = $('#_transactionFee').val()
     var optionalData = $('#_optionalData').val()
 
-    alert('Account address: ' + address)
+    let txObject = {
+        from: accountAddress + '',
+        to: address + '',
+        value: web3.toWei(amount, 'ether'),
+        data: web3.toHex(optionalData),
+        gas: 30000
+    }
+
+    console.log(txObject)
+
+    // 0xb4711e067096B404356D93568EB8aa6b8dA528E6
+    web3.eth.sendTransaction(txObject, (err, txHash) => {
+        if(err) {
+            console.log('There was an error broadcasting the transaction')
+            console.log(err)
+        } else {
+            console.log('Your transaction was broadcasted\ntxHash: ' + txHash)
+        }
+    })
+
+    event.preventDefault()
+    console.log('Passou do event.preventDefault()')
 }
