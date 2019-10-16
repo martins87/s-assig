@@ -8,6 +8,6 @@ var ethAccountSchema = new Schema({
     description: String
 })
 
-const EthereumAccount = mongoose.model('eth-accounts', transactionSchema)
+const EthereumAccount = mongoose.model('eth-accounts', ethAccountSchema)
 
 module.exports = EthereumAccount

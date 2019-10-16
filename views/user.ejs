@@ -1,51 +1,69 @@
 <% include partials/header.ejs %>
 
-    <div class="container py-5">
-        <div class="row mb-2">
-            <header>
-                <h2><b>User</b></h2>
-            </header>
-        </div>
-        <div class="row">
-            <ul class="list-group">
-                <li class="list-group-item justify-content-between align-items-center">
-                    Id
-                    <span class="badge badge-primary badge-pill"><%= id %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Name
-                    <span class="badge badge-primary badge-pill"><%= name %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Description
-                    <span class="badge badge-primary badge-pill"><%= description %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    E-mail
-                    <span class="badge badge-primary badge-pill"><%= email %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Bitcoin Wallet Address
-                    <span class="badge badge-primary badge-pill"><%= bitcoinWalletId %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Bitcoin Balance
-                    <span class="badge badge-primary badge-pill"><%= bitcoinBalance %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Ethereum Wallet Address
-                    <span class="badge badge-primary badge-pill"><%= ethereumWalletId %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Ether Balance
-                    <span class="badge badge-primary badge-pill"><%= etherBalance %></span>
-                </li>
-                <li class="list-group-item justify-content-between align-items-center">
-                    Max Amount Allowed
-                    <span class="badge badge-primary badge-pill"><%= maxAmountAllowed %></span>
-                </li>
-            </ul>
-        </div>
+<div class="container py-5">
+    <div class="row mb-2">
+        <header>
+            <h2><b>User</b></h2>
+        </header>
     </div>
+    <div class="row">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Id</div>
+                    <div class="col users-table-values"><%= id %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Name</div>
+                    <div class="col users-table-values"><%= name %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Description</div>
+                    <div class="col users-table-values"><%= description %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">E-mail</div>
+                    <div class="col users-table-values"><%= email %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Bitcoin Wallet Address</div>
+                    <div class="col users-table-values"><%= bitcoinWalletId %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Bitcoin Balance</div>
+                    <div class="col users-table-values"><%= bitcoinBalance %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Ethereum Wallet Address</div>
+                    <div class="col users-table-values"><%= ethereumWalletId %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Ether Balance</div>
+                    <div class="col users-table-values"><%= etherBalance %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col users-table-attributes">Max Amount Allowed</div>
+                    <div class="col users-table-values"><%= maxAmountAllowed %></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <% include partials/footer.ejs %>

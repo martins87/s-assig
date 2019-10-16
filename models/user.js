@@ -9,7 +9,7 @@ var userSchema = new Schema({
     bitcoinBalance: String,
     ethereumWalletId: String,
     etherBalance: String,
-    maxAmountAllowed: String,
+    maxAmountAllowed: String
 })
 
 // users collection

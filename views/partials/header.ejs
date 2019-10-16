@@ -5,6 +5,7 @@
 
         <link rel="shortcut icon" type="image/png" href="../img/s-icon.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
     </head>
     <body>
 
@@ -13,14 +14,22 @@
         
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/users">Users</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="usersDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
+                        <div class="dropdown-menu" aria-labelledby="usersDropdown">
+                            <a class="nav-link" href="/users">See Users</a>
+                            <a class="nav-link" href="/create-user">Create User</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="nav-link" href="/add-account">Add Account</a>
+                        </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/create-user">Create User</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="transactionsDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transactions</a>
+                        <div class="dropdown-menu" aria-labelledby="transactionsDropdown">
+                            <a class="nav-link" href="/submit-transaction">Submit Transaction</a>
+                        </div>
                     </li>
                 </ul>
             </div>

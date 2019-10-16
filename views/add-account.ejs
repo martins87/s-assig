@@ -1,0 +1,44 @@
+<% include partials/header.ejs %>
+
+        <div class="container mt-5">
+            <div class="row mb-3">
+                <header>
+                    <h2><b>Add Ethereum Account</b></h2>
+                </header>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form action="/add-account" method="POST">
+                        <div class="form-group row">
+                            <label for="userId" class="col-sm-2 col-form-label">User Id</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="userId">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="ethereumAddress" class="col-sm-2 col-form-label">Ethereum Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="ethereumAddress">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="accountBalance" class="col-sm-2 col-form-label">Balance</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="accountBalance">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="accountDescription" class="col-sm-2 col-form-label">Account Description</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="accountDescription">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <script src="../js/createUser.js"></script>
+
+<% include partials/footer.ejs %>
