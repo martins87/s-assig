@@ -8,43 +8,49 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <form action="/add-account" method="POST">
+                    <form action="/submit-transaction" method="POST">
                         <div class="form-group row">
                             <label for="accountAddress" class="col-sm-2 col-form-label">Account Address</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="accountAddress">
+                                <input type="text" class="form-control" name="accountAddress" id="_accountAddress">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="currency" class="col-sm-2 col-form-label">Currency</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="ethereumAddress" placeholder="Ether" readonly>
+                                <input type="text" class="form-control" name="currency" placeholder="Ether"  id="_currency" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="amount" class="col-sm-2 col-form-label">Amount</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="amount">
+                                <input type="text" class="form-control" name="amount" id="_amount">
                             </div>
                         </div>
                         <div class="form-group row">
+                            <!-- https://www.sitepoint.com/ethereum-transaction-costs/ -->
+                            <!-- https://ethgasstation.info/ -->
                             <label for="transactionFee" class="col-sm-2 col-form-label">Transaction Fee</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="transactionFee">
+                                <select class="form-control" name="transactionFee" id="_transactionFee">
+                                    <option value="0.00002">Slow: 0.00002 ETH</option>
+                                    <option value="0.00002">Average: 0.00002 ETH</option>
+                                    <option value="0.00021">Fast: 0.00021 ETH</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="optionalData" class="col-sm-2 col-form-label">Optional Data</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="optionalData">
+                                <input type="text" class="form-control" name="optionalData"  id="_optionalData">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" onclick="getTransaction()">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
 
-    <script src="../js/createUser.js"></script>
+    <script src="../js/submitTransaction.js"></script>
 
 <% include partials/footer.ejs %>
