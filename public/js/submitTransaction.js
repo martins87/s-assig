@@ -48,6 +48,8 @@ function submitTransaction() {
     var transactionFee = $('#_transactionFee').val()
     var optionalData = $('#_optionalData').val()
 
+    // TODO: validate the transaction
+    // E.g.: user A has enough of currency type and amount, etc. ...
     let txObject = {
         from: accountAddress + '',
         to: address + '',
@@ -56,18 +58,19 @@ function submitTransaction() {
         gas: 30000
     }
 
-    console.log(txObject)
+    // payload
+    var txMessage = JSON.stringify(txObject)
+    console.log('txObject: ', txMessage)
 
     // 0xb4711e067096B404356D93568EB8aa6b8dA528E6
-    web3.eth.sendTransaction(txObject, (err, txHash) => {
-        if(err) {
-            console.log('There was an error broadcasting the transaction')
-            console.log(err)
-        } else {
-            console.log('Your transaction was broadcasted\ntxHash: ' + txHash)
-        }
-    })
+    // web3.eth.sendTransaction(txObject, (err, txHash) => {
+    //     if(err) {
+    //         console.log('There was an error broadcasting the transaction')
+    //         console.log(err)
+    //     } else {
+    //         console.log('Your transaction was broadcasted\ntxHash: ' + txHash)
+    //     }
+    // })
 
     event.preventDefault()
-    console.log('Passou do event.preventDefault()')
 }
