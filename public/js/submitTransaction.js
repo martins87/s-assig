@@ -58,19 +58,37 @@ function submitTransaction() {
         gas: 30000
     }
 
-    // payload
-    var txMessage = JSON.stringify(txObject)
-    console.log('txObject: ', txMessage)
+    // set values for form fields
+    $('#_from').val(txObject.from)
+    $('#_to').val(txObject.to)
+    $('#_value').val(txObject.value)
+    $('#_hexData').val(txObject.data)
+    $('#_gas').val(txObject.gas)
+    // $('#_txId').val('10')
+
+    // let DOMObject = {
+    //     from: $('#_from').val(),
+    //     to: $('#_to').val(),
+    //     value: $('#_value').val(),
+    //     data: $('#_hexData').val(),
+    //     gas: $('#_gas').val()
+    //     // txId: $('#_txId').val() 
+    // }
+    // console.log('DOMObject: ', DOMObject)
 
     // 0xb4711e067096B404356D93568EB8aa6b8dA528E6
-    // web3.eth.sendTransaction(txObject, (err, txHash) => {
+    // web3.eth.sendTransaction(DOMObject, (err, txHash) => {
     //     if(err) {
     //         console.log('There was an error broadcasting the transaction')
     //         console.log(err)
     //     } else {
     //         console.log('Your transaction was broadcasted\ntxHash: ' + txHash)
+
+    //         $('#_txId').val(txHash)
+    //         console.log('Setou a tx hash!')
+    //         event.preventDefault()
     //     }
     // })
 
-    event.preventDefault()
+    // event.preventDefault()
 }

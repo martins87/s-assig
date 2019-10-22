@@ -2,10 +2,12 @@ const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const amqp = require('amqplib/callback_api')
 const User = require('./models/user')
 const EthereumAccount = require('./models/ethereum-account')
 
 const dbUrl = 'mongodb://localhost:27017/salamantex'
+const cloudamqpURL = 'amqp://tvreunjr:It10Yr2NXk5VMemIibOZg2fctMS9oUwO@prawn.rmq.cloudamqp.com/tvreunjr'
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -127,9 +129,42 @@ app.post('/add-account', (req, res) => {
 })
 
 app.post('/submit-transaction', (req, res) => {
-    var data = req.body
+    var formData = req.body
+    
+    let txObject = {
+        from: formData.from,
+        to: formData.to,
+        value: formData.value,
+        data: formData.hexData,
+        gas: formData.gas
+    }
 
-    console.log('transaction: ', data)
+    console.log('transaction object received: ', txObject)
+
+    // 0xb4711e067096B404356D93568EB8aa6b8dA528E6
+
+    // submit/add transaction to queue
+    amqp.connect(cloudamqpURL, (err, conn) => {
+        if(err) {
+            console.log('There was and error connecting to the cloud amqp')
+            return console.log(err)
+        } else {
+            conn.createChannel((err, ch) => {
+                if(err) {
+                    console.log('Error creating the channel')
+                    return console.log(err)
+                }
+
+                var queue = 'transactions'
+                ch.assertQueue(queue, {durable: false})
+                var msg = JSON.stringify(txObject)
+
+                ch.sendToQueue(queue, Buffer.from(msg))
+                console.log('Message added to queue: ' + msg)
+            })
+        }
+    })
+
 
     // EthereumAccount.create({
     //     address: data.ethereumAddress,

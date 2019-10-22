@@ -1,3 +1,6 @@
+// way of better doing it:
+// https://www.cloudamqp.com/blog/2015-05-19-part2-2-rabbitmq-for-beginners_example-and-sample-code-node-js.html
+
 const amqp = require('amqplib/callback_api')
 
 const cloudamqpURL = 'amqp://tvreunjr:It10Yr2NXk5VMemIibOZg2fctMS9oUwO@prawn.rmq.cloudamqp.com/tvreunjr'
@@ -18,7 +21,7 @@ amqp.connect(cloudamqpURL, (err, conn) => {
         setInterval(() => {
             ch.sendToQueue(queue, Buffer.from(msg))
             console.log('Message sent: ' + msg)
-        }, 3000)
+        }, 5000)
 
         // setTimeout(() => {
         //     conn.close(); process.exit(0)
