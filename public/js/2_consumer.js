@@ -26,15 +26,7 @@ amqp.connect(cloudamqpURL, (err, conn) => {
             console.log('Message received (object): ', txObject)
 
             // process transaction received...
-            // 0xb4711e067096B404356D93568EB8aa6b8dA528E6
-            web3.eth.sendTransaction(DOMObject, (err, txHash) => {
-                if(err) {
-                    console.log('There was an error broadcasting the transaction')
-                    console.log(err)
-                } else {
-                    console.log('Your transaction was broadcasted: ' + txHash)
-                }
-            })
+            // 
 
         }, {noAck: true})
     })
