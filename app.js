@@ -133,7 +133,7 @@ app.post('/submit-transaction', (req, res) => {
     var formData = req.body
     
     let txObject = {
-        from: formData.from,
+        // from: formData.from,
         to: formData.to,
         value: formData.value,
         data: formData.hexData,
@@ -162,7 +162,7 @@ app.post('/submit-transaction', (req, res) => {
 
                 // submits transaction object as a string to the queue
                 ch.sendToQueue(queue, Buffer.from(msg))
-                
+
                 console.log('Message added to queue: ' + msg)
             })
         }

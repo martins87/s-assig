@@ -51,11 +51,11 @@ function submitTransaction() {
     // TODO: validate the transaction
     // E.g.: user A has enough of currency type and amount, etc. ...
     let txObject = {
-        from: accountAddress + '',
+        // from: accountAddress + '',
         to: recipient + '',
         value: web3.toWei(amount, 'ether'),
         data: web3.toHex(optionalData),
-        gas: 30000
+        gas: 100000
     }
 
     // set values for form fields
