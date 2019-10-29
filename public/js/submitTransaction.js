@@ -43,7 +43,7 @@ window.addEventListener('load', async () => {
 })
 
 function submitTransaction() {
-    var address = $('#_accountAddress').val()
+    var recipient = $('#_accountAddress').val()
     var amount = $('#_amount').val()
     var transactionFee = $('#_transactionFee').val()
     var optionalData = $('#_optionalData').val()
@@ -52,7 +52,7 @@ function submitTransaction() {
     // E.g.: user A has enough of currency type and amount, etc. ...
     let txObject = {
         from: accountAddress + '',
-        to: address + '',
+        to: recipient + '',
         value: web3.toWei(amount, 'ether'),
         data: web3.toHex(optionalData),
         gas: 30000

@@ -26,8 +26,13 @@ amqp.connect(cloudamqpURL, (err, conn) => {
             console.log('Message received (object): ', txObject)
 
             // process transaction received...
-            // 
+            sendTransaction(txObject)
 
         }, {noAck: true})
     })
 })
+
+function sendTransaction(txObject) {
+    console.log('The transaction to be processed:')
+    console.log(txObject)
+}

@@ -128,6 +128,7 @@ app.post('/add-account', (req, res) => {
     res.render('index', { title: 'Salamentex' })
 })
 
+// get the transaction submitted
 app.post('/submit-transaction', (req, res) => {
     var formData = req.body
     
@@ -164,21 +165,6 @@ app.post('/submit-transaction', (req, res) => {
             })
         }
     })
-
-
-    // EthereumAccount.create({
-    //     address: data.ethereumAddress,
-    //     balance: data.accountBalance,
-    //     description: data.accountDescription,
-    // }, (err, data) => {
-    //     if(err) {
-    //         console.log('There was a problem adding a document to eth-accounts collection')
-    //         console.log(err)
-    //     } else {
-    //         console.log('Data successfully added to database:')
-    //         console.log(data)
-    //     }
-    // })
 
     res.render('submit-transaction', { title: 'Submit Transaction' })
 })

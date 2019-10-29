@@ -6,14 +6,16 @@
 require('dotenv').config()
 const Web3 = require('web3')
 const axios = require('axios')
-const EthereumTx = require('ethereumjs-tx').Transaction // https://www.npmjs.com/package/ethereumjs-tx
+// https://www.npmjs.com/package/ethereumjs-tx
+const EthereumTx = require('ethereumjs-tx').Transaction
 
-const ropsten = `https://ropsten.infura.io/v3/de4a2c55653244c58c7af6e9c04089b5`
+const ropsten = 'https://ropsten.infura.io/v3/de4a2c55653244c58c7af6e9c04089b5'
 const web3 = new Web3(new Web3.providers.HttpProvider(ropsten))
 web3.eth.defaultAccount = process.env.WALLET_ADDRESS
 
 const amountToSend = 0.0
 
+// https://ropsten.etherscan.io/tx/0x8cea587b93e32ed65367777108693d0ef8dc698daab3219d196a3de4a1cf61ec
 const main = async () => {
     // get the balance in Ether
     let myBalanceInWei = await web3.eth.getBalance(web3.eth.defaultAccount)
@@ -32,26 +34,37 @@ const main = async () => {
 
     // build the transaction
     let txObject = {
-        // to: process.env.DESTINATION_WALLET_ADDRESS,
-        to: web3.utils.toChecksumAddress('0xb4711e067096B404356D93568EB8aa6b8dA528E6'),
+        to: process.env.DESTINATION_WALLET_ADDRESS,
+        // to: web3.utils.toChecksumAddress('0xb4711e067096B404356D93568EB8aa6b8dA528E6'),
         value: web3.utils.toHex(web3.utils.toWei(amountToSend.toString(), 'ether')),
-        gas: 21000,
+        gas: 30000, // standard: 21000
         gasPrice: gasPrices.low * 1000000000,
         nonce: nonce,
+        data: web3.utils.toHex('Daniel'),
         chainId: 3 // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md
     }
 
-    console.log('Transaction: ', txObject)
+    console.log('Transaction:\n', txObject)
 
-    const transaction = new EthereumTx(txObject)
-    transaction.sign(Buffer.from(process.env.WALLET_PRIVATE_KEY, 'hex'))
-    // const serializedTransaction = transaction.serialize()
+    var tx = new EthereumTx(txObject, {'chain': 'ropsten'})
+    tx.sign(Buffer.from(process.env.WALLET_PRIVATE_KEY, 'hex'))
+    
+    var serializedTx = tx.serialize()
+
+    const txId = web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'))
+        .on('receipt', console.log)
+
+    // web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'))
+    //     .on('receipt', (txId) => {
+    //         var obj = web3.eth.getTransaction(txId)
+    //         console.log('obj:\n', + obj)
+    //     })
 
     // send the transaction
-    const txId = web3.eth.sendTransaction(transaction)
+    // const txId = web3.eth.sendTransaction(tx)
 
-    const txUrl = `https://ropsten.etherscan.io/tx/${txId}`
-    console.log('tx url: ' + txUrl)
+    // const txUrl = `https://ropsten.etherscan.io/tx/${txId}`
+    // console.log('tx url: ' + txUrl)
 }
 
 // fetch the current transaction gas prices from https://ethgasstation.info
