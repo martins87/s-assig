@@ -128,7 +128,7 @@ app.post('/add-account', (req, res) => {
     res.render('index', { title: 'Salamentex' })
 })
 
-// get the transaction submitted
+// Get the transaction submitted and add it to queue
 app.post('/submit-transaction', (req, res) => {
     var formData = req.body
     
@@ -141,8 +141,6 @@ app.post('/submit-transaction', (req, res) => {
     }
 
     console.log('transaction object received: ', txObject)
-
-    // 0xb4711e067096B404356D93568EB8aa6b8dA528E6
 
     // submit/add transaction to queue
     amqp.connect(cloudamqpURL, (err, conn) => {
@@ -158,9 +156,13 @@ app.post('/submit-transaction', (req, res) => {
 
                 var queue = 'transactions'
                 ch.assertQueue(queue, {durable: false})
+
+                // converts the transaction object to a string
                 var msg = JSON.stringify(txObject)
 
+                // submits transaction object as a string to the queue
                 ch.sendToQueue(queue, Buffer.from(msg))
+                
                 console.log('Message added to queue: ' + msg)
             })
         }

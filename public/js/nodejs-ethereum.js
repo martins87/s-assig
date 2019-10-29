@@ -1,4 +1,4 @@
-// https://github.com/davekiss/web3-node-tutorial
+	// https://github.com/davekiss/web3-node-tutorial
 // https://github.com/ethereumjs/ethereumjs-tx/tree/f4cd11fa738d469420d4a6d3df575048ef5e7a4f
 // Infura Make Requests
 //  https://infura.io/docs/gettingStarted/makeRequests.md
@@ -15,7 +15,10 @@ web3.eth.defaultAccount = process.env.WALLET_ADDRESS
 
 const amountToSend = 0.0
 
-// https://ropsten.etherscan.io/tx/0x8cea587b93e32ed65367777108693d0ef8dc698daab3219d196a3de4a1cf61ec
+/**
+ * My first Ethereum transaction sent from a Node.js program:
+ * https://ropsten.etherscan.io/tx/0x8cea587b93e32ed65367777108693d0ef8dc698daab3219d196a3de4a1cf61ec
+ */
 const main = async () => {
     // get the balance in Ether
     let myBalanceInWei = await web3.eth.getBalance(web3.eth.defaultAccount)
@@ -35,10 +38,9 @@ const main = async () => {
     // build the transaction
     let txObject = {
         to: process.env.DESTINATION_WALLET_ADDRESS,
-        // to: web3.utils.toChecksumAddress('0xb4711e067096B404356D93568EB8aa6b8dA528E6'),
         value: web3.utils.toHex(web3.utils.toWei(amountToSend.toString(), 'ether')),
         gas: 30000, // standard: 21000
-        gasPrice: gasPrices.low * 1000000000,
+        gasPrice: gasPrices.high * 1000000000,
         nonce: nonce,
         data: web3.utils.toHex('Daniel'),
         chainId: 3 // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md
