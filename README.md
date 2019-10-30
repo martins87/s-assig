@@ -2,6 +2,12 @@
 
 ## Screenshots
 
+Submit a transaction:
+
+![Submit transaction](https://i.imgur.com/szSgGtq.png)
+
+Parallel transactions processor:
+
 ![Transactions processor](https://i.imgur.com/u24sax0.png)
 
 ## Description
