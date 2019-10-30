@@ -6,7 +6,8 @@ const amqp = require('amqplib/callback_api')
 const User = require('./models/user')
 const EthereumAccount = require('./models/ethereum-account')
 
-const dbUrl = 'mongodb://localhost:27017/salamantex'
+// const dbUrl = 'mongodb://localhost:27017/salamantex'
+const dbUrl = 'mongodb://admin:salamantex123@ds241408.mlab.com:41408/salamantex'
 const cloudamqpURL = 'amqp://tvreunjr:It10Yr2NXk5VMemIibOZg2fctMS9oUwO@prawn.rmq.cloudamqp.com/tvreunjr'
 
 mongoose.connect(dbUrl, {
