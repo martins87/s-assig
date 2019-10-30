@@ -1,5 +1,11 @@
 # Salamantex Assignment - Transactions Processor
 
+## Screenshots
+
+![Transactions processor](https://i.imgur.com/u24sax0.png)
+
+## Description
+
 transaction information is logged on terminal 2
 mongodb in the cloud
 amqp in the cloud
