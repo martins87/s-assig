@@ -11,7 +11,7 @@
 
 The application is a simple transactions processor that allows a user to submit a transaction on the 'Submit Transaction' page. The transaction submitted is sent to a queue and it is processed by the parallel process running in parallel. The log of the transaction mined is shown on the processor terminal (as shown on the second image above).
 
-## 2. Project decicions
+## 2. Project decisions
 
 * Database used: MongoDB
 * Technology used: Node.js
@@ -21,6 +21,7 @@ The application is a simple transactions processor that allows a user to submit 
 * Only Ethereum transactions were implemented
 * The Ethereum Ropsten Test Network was chosed
 * An account on the Ropsten Network was created for the application. The processor signs and sends transactions from this account
+* No validations are made for the moment (Wait for it...)
 
 ## 3. The Transactions Processor
 
