@@ -66,6 +66,8 @@ node public/js/processor.js
 
 Open your browser and go to http://localhost:3000/
 
+To see the transactions on the explorer, go to [https://ropsten.etherscan.io/address/0x220339f638a2ce9a1a7143f2ee7d19999cba13b8](https://ropsten.etherscan.io/address/0x220339f638a2ce9a1a7143f2ee7d19999cba13b8)
+
 ## 6. Built With
 
 * [Bootstrap](https://getbootstrap.com/)

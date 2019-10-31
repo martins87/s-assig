@@ -141,7 +141,7 @@ app.post('/submit-transaction', (req, res) => {
         gas: formData.gas
     }
 
-    console.log('transaction object received: ', txObject)
+    console.log('Transaction object received: ', txObject)
 
     // submit/add transaction to queue
     amqp.connect(cloudamqpURL, (err, conn) => {
