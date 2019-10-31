@@ -66,6 +66,9 @@ node public/js/processor.js
 
 Open your browser and go to http://localhost:3000/
 
+**Note:**
+*At the moment, transactions are only working when you send 0 Ether and put some text on the field "Optional Data", like ''Salamantex", so please try it out.*
+
 To see the transactions on the explorer, go to [https://ropsten.etherscan.io/address/0x220339f638a2ce9a1a7143f2ee7d19999cba13b8](https://ropsten.etherscan.io/address/0x220339f638a2ce9a1a7143f2ee7d19999cba13b8)
 
 ## 6. Built With
