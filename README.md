@@ -1,41 +1,39 @@
+
 # Salamantex Assignment - Transactions Processor
-
-## Screenshots
-
-Submit a transaction:
 
 ![Submit transaction](https://i.imgur.com/szSgGtq.png)
 
-Parallel transactions processor:
+---
 
 ![Transactions processor](https://i.imgur.com/u24sax0.png)
 
-## Description
+## 1. Description
 
-transaction information is logged on terminal 2
-mongodb in the cloud
-amqp in the cloud
+The application is a simple transactions processor that allows a user to submit a transaction on the 'Submit Transaction' page. The transaction submitted is sent to a queue and it is processed by the parallel process running in parallel. The log of the transaction mined is shown on the processor terminal (as shown on the second image above).
 
-create user
-list users
-see a user
+## 2. Project decicions
 
-transactions
-	submitted to a queue using amqp (cloud)
-processor
-	node.js packages:
-		amqp			for message queueing
-		web3			for making the connection to an Ethereum node
-		axios			for fetching ether gas prices from https://ethgasstation.info/json/ethgasAPI.json
-		ethereumjs-tx	for creating the transactions
-	ropsten test network
-	an Ethereum account was created for the application, received 5 ropsten ether
-add ethereum account but does nothing
+* Database used: MongoDB
+* Technology used: Node.js
+* Protocol for message queueing: AMQP
+* Database simple operations: create user, list users, see a specific user
+* For the application to be easy to test, both database and message queueing processor are on the cloud: https://mlab.com/ and https://www.cloudamqp.com/
+* Only Ethereum transactions were implemented
+* The Ethereum Ropsten Test Network was chosed
+* An account on the Ropsten Network was created for the application. The processor signs and sends transactions from this account
 
+## 3. The Transactions Processor
 
-## Getting Started
+The processor is a program that must run in parallel. It listens for messages sent to the queue, get them and process them.
+When a transaction is received by the processor, it builds an Ethereum transaction with the data received and broadcasts it to the network.
 
-...
+Node.js packages used :
+* amqp - for message queueing
+* web3 - for making the connection to an Ethereum node
+* axios - for fetching ether gas prices from https://ethgasstation.info/json/ethgasAPI.json
+* ethereumjs-tx - for creating the transactions
+
+## 4. Getting Started
 
 ### Prerequisites
 
@@ -48,12 +46,13 @@ Clone the repository:
 git clone https://github.com/martins87/s-assig.git
 ```
 
-## Running the tests
+## 5. Running the tests
 
 Open terminal 1:
 
 ```
 git clone https://github.com/martins87/s-assig.git
+cd s-assig
 npm install
 npm start
 ```
@@ -66,19 +65,12 @@ node public/js/processor.js
 
 Open your browser and go to http://localhost:3000/
 
-## Built With
+## 6. Built With
 
-* [Bootstrap](https://getbootstrap.com/) - The web framework used
-* [Node.js](https://nodejs.org/) - Dependency Management
+* [Bootstrap](https://getbootstrap.com/)
+* [Node.js](https://nodejs.org/)
+* [MongoDB](https://www.mongodb.com/)
 
-## Contributing
-
-...
-
-## Versioning
-
-...
-
-## Authors
+## 7. Author
 
 * **Daniel Martins** - [Operation Blockchain](https://www.operationblockchain.org/)
